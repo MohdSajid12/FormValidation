@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form-Validation</title>
+</head>
+
+<body>
+
+
+    <form action="#" onsubmit=" return validation()">
+
+        Name: <input type="text" id="namee" placeholder="name"><br>
+        <span id="nameee" style="color: red;"></span><br>
+
+        Mobile: <input type="text" id="mobilee" placeholder="mobile"><br>
+        <span id="mobileee" style="color: red;"></span><br>
+
+        Email: <input type="text" id="emaile" placeholder="email"><br>
+        <span id="emailee" style="color: red;"></span><br>
+
+
+        Password: <input type="text" id="passworde" placeholder="password"><br>
+        <span id="passwordee" style="color: red;"></span><br>
+
+        Confirm-Password <input type="text" id="cpassworde" placeholder="confirm-password">
+        <span id="cpasswordee" style="color: red;"></span><br>
+
+        <input type="submit">
+    </form>
+
+</body>
+
+<script>
+
+    function validation() {
+        var name = document.getElementById('namee').value;
+        var email = document.getElementById('emaile').value;
+        var password = document.getElementById('passworde').value;
+        var Cpassword = document.getElementById('cpassworde').value;
+        var mobile = document.getElementById('mobilee').value;
+
+        var spanname = document.getElementById('nameee')
+        var spanemail = document.getElementById('emailee')
+        var spanpassword = document.getElementById('passwordee')
+        var spanCpassword = document.getElementById('cpasswordee')
+        var spanmobile = document.getElementById('mobileee')
+
+
+        //for name validation
+
+        if (name == '') {
+
+            spanname.innerHTML = '**name cant be empty**'
+            return false;
+        }
+        if (!isNaN(name)) {
+            spanname.innerHTML = '**please dont write number type characters**';
+            return false;
+        }
+
+        if (name.length < 2) {
+
+            spanname.innerHTML = '**please write more than one character**';
+            return false;
+        }
+
+        else {
+
+            spanname.innerHTML = "";
+        }
+
+
+
+
+        //for mobile validation
+
+        if (mobile == "") {
+
+            spanmobile.innerHTML = '**mobile number cant be empty**'
+            return false;
+
+        }
+
+        if (isNaN(mobile)) {
+
+            spanmobile.innerHTML = '**mobile number should be only number**'
+            return false;
+        }
+
+        if (mobile.length < 10) {
+
+            spanmobile.innerHTML = '**mobile number should be greater tha 10**'
+            return false;
+        }
+
+        else {
+
+            spanmobile.innerHTML = "";
+        }
+
+
+
+
+
+        //for email vaidation
+
+        if (email == "") {
+
+            spanemail.innerHTML = '**email cant be empty**'
+            return false;
+
+        }
+
+
+        if (email.charAt(email.length - 4) != '.' && email.charAt(email.length - 3) != '.') {
+
+            spanemail.innerHTML = '**invalid position of .(dot)**'
+            return false;
+
+        }
+
+        if (email.indexOf('@') <= 0) {
+
+            spanemail.innerHTML = '**please dont @ on first**'
+            return false;
+
+        }
+        else {
+
+            spanemail.innerHTML = "";
+        }
+
+
+
+
+        //for password validation
+
+
+        if (password == "") {
+
+            spanpassword.innerHTML = '**password cant be empty**';
+            return false;
+
+        }
+
+        if (password.length < 8) {
+
+            spanpassword.innerHTML = '**password can be greater than 8 **';
+            return false;
+
+        }
+
+        if (password.search(/[0-9]/) == -1) {
+            spanpassword.innerHTML = '**required atleast one numeric**';
+            return false;
+
+        }
+        if (password.search(/[A-Z]/) == -1) {
+            spanpassword.innerHTML = '**Atleast one upper case requird**';
+            return false;
+
+        }
+        if (password.search(/[@#$%&*]/) == -1) {
+            spanpassword.innerHTML = '**Atleast one special character requird**';
+            return false;
+
+        }
+        else {
+
+            spanpassword.innerHTML = "";
+        }
+
+
+
+
+
+        if (Cpassword == "") {
+
+            spanCpassword.innerHTML = '**repassword cant be empty**';
+            return false;
+
+        }
+        if (Cpassword != password) {
+
+            spanCpassword.innerHTML = '**password dont matched**';
+            return false;
+
+        }
+        else {
+
+            spanCpassword.innerHTML = "";
+        }
+
+    }
+</script>
+
+</html>
